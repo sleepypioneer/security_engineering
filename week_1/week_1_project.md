@@ -73,6 +73,9 @@ aws iam list-users
 
 ### Control - What permissions do your current credentials grant? Can you assume any roles?
 
+No, I checked the roles and none of them had AWSUserRoleAccess. I have read-only access.
+
+
 ```sh
 aws iam list-attached-user-policies --user-name corise-readonly
 ```
@@ -149,6 +152,8 @@ aws iam list-roles --query 'Roles[].{RoleName:RoleName, RoleArn:Arn, AWSUserRole
 |                   |  arn:aws:iam::849265715259:role/wp-example-fe-task-role-fb52a41                                                            |  wp-example-fe-task-role-fb52a41       |  ecs-tasks.amazonaws.com             |
 
 ### Control - Is there any logging setup? If so, what kind?
+
+There are VPC flow logs for capturing information about the IP traffic going to and from network interfaces in the VPC. Additionally there are CloudWatch Logs. The django-log-group is attached to the Polly application.
 
 #### VPC Flow Logs
 
